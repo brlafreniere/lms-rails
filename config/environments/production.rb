@@ -1,4 +1,11 @@
 Rails.application.configure do
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'lms.lizardgizzards.com'
+      resource '*', headers: :any, methods: [:get, :post, :options]
+    end
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
